@@ -1,10 +1,19 @@
-
 package interfaz;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author FerGuevara
+ */
 public class Login extends javax.swing.JFrame {
 
     /**
-     * Creates new form Login
+     * Creates new form Ventana
      */
     public Login() {
         initComponents();
@@ -21,58 +30,46 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jBtnIngresar = new javax.swing.JButton();
         jBtnSalir = new javax.swing.JButton();
+        jTxtContraseña = new javax.swing.JPasswordField();
         jTxtUser = new javax.swing.JTextField();
-        jTxtPassword = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jBtnLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("LOGIN");
         setUndecorated(true);
         setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jBtnIngresar.setText("INGRESAR");
-        jPanel1.add(jBtnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
-
-        jBtnSalir.setText("SALIR");
+        jBtnSalir.setBackground(new java.awt.Color(255, 255, 255));
+        jBtnSalir.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jBtnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
+        jBtnSalir.setBorderPainted(false);
+        jBtnSalir.setContentAreaFilled(false);
         jBtnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jBtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 100, -1));
-        jPanel1.add(jTxtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 190, -1));
-        jPanel1.add(jTxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 190, -1));
+        jPanel1.add(jBtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, -1, 30));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("CONTRASEÑA:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+        jTxtContraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTxtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jTxtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 300, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("USUARIO:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+        jTxtUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTxtUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jTxtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 300, 30));
 
-        jLabel2.setFont(new java.awt.Font("Impact", 2, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("INGRESO AL SISTEMA");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
+        jBtnLogin.setBackground(new java.awt.Color(0, 0, 0));
+        jBtnLogin.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
+        jBtnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnLogin.setText("LOG IN");
+        jPanel1.add(jBtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 200, 40));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/loginIcon.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 400, 160));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoLogin.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 410));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Login.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 400));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +79,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -118,6 +115,7 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -128,15 +126,11 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnIngresar;
+    private javax.swing.JButton jBtnLogin;
     private javax.swing.JButton jBtnSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jTxtPassword;
+    private javax.swing.JPasswordField jTxtContraseña;
     private javax.swing.JTextField jTxtUser;
     // End of variables declaration//GEN-END:variables
 }
