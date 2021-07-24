@@ -66,10 +66,15 @@ public class Login extends javax.swing.JFrame {
         jBtnLogin.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
         jBtnLogin.setForeground(new java.awt.Color(255, 255, 255));
         jBtnLogin.setText("LOG IN");
+        jBtnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnLoginActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 200, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Login.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 400));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 700, 400));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,6 +93,10 @@ public class Login extends javax.swing.JFrame {
     private void jBtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jBtnSalirActionPerformed
+
+    private void jBtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnLoginActionPerformed
 
     /**
      * @param args the command line arguments
