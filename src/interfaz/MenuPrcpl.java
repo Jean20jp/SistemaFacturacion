@@ -132,6 +132,9 @@ public class MenuPrcpl extends javax.swing.JFrame {
 
     private void jMnuItmCrearUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuItmCrearUserActionPerformed
         // TODO add your handling code here:
+        Usuario use = new Usuario();
+        jDesktopPane1.add(use);
+        use.show();
     }//GEN-LAST:event_jMnuItmCrearUserActionPerformed
 
     private void jMnuItmClintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuItmClintActionPerformed

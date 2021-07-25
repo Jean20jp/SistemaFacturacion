@@ -1,17 +1,121 @@
-
 package interfaz;
+
+import com.sun.javafx.css.SizeUnits;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Usuario extends javax.swing.JInternalFrame {
 
+    DefaultTableModel modelo;
+
     public Usuario() {
         initComponents();
+        bloquearBotonesInicio();
+        bloquearTextosInicio();
+        cargarTablaUsuarios();
     }
     
-    private void crearUsuarios(){
+
+    public void bloquearBotonesInicio() {
+        jBtnCrear.setEnabled(true);
+        jBtnEliminar.setEnabled(false);
+        jBtnActualizar.setEnabled(false);
+        jBtnSalir.setEnabled(true);
         
     }
 
-  
+ 
+
+    public void bloquearTextosInicio() {
+        jTxtCedula.setEnabled(false);
+        jTxtNombre.setEnabled(false);
+        jTxtApellido.setEnabled(false);
+        jTxtPswUser.setEnabled(false);
+        jCbxTipUser.setEnabled(false);
+        jCbxTipUser.setEnabled(false);
+
+    }
+    
+    private void limpiarTextosIniciales() {
+        jTxtCedula.setText("");
+        jTxtNombre.setText("");
+        jTxtApellido.setText("");
+        jTxtCedula.setText("");
+    }
+
+    public void cargarTablaUsuarios() {
+        try {
+            String[] titulos = {"Cedula", "Nombre", "Apellido", "Tipo Usuario"};
+            modelo = new DefaultTableModel(null, titulos);
+
+            String[] registros = new String[5];
+            conexion.Conexion cc = new conexion.Conexion();
+            Connection cn = cc.conectar();
+            String sql = "";
+            sql = "select Ci_Usu, Nom_Usu, Ape_Usu, Tip_Usu from Usuarios";
+            Statement psd = cn.createStatement();
+            ResultSet rs = psd.executeQuery(sql);
+            while (rs.next()) {
+                registros[0] = rs.getString("Ci_Usu");
+                registros[1] = rs.getString("Nom_Usu");
+                registros[2] = rs.getString("Ape_Usu");
+                registros[3] = rs.getString("Tip_Usu");
+                modelo.addRow(registros);
+            }
+            jTblUsuarios.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "ERROR: No se pudo cargar el sistema contactese con el administrador");
+
+        }
+    }
+    
+    public void crearUsuario() {
+        
+        if (jTxtCedula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe Ingresar la cedula");
+            jTxtCedula.requestFocus();
+        } else if (jTxtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe Ingresar el nombre");
+            jTxtNombre.requestFocus();
+        } else if (jTxtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe Ingresar el apellido");
+            jTxtApellido.requestFocus();
+        } else {
+            
+            try {
+                String cedula, nombre, apellido, contraseña, tipoUsuario;
+                conexion.Conexion cc = new conexion.Conexion();
+                Connection cn = cc.conectar();
+                cedula = jTxtCedula.getText();
+                nombre = jTxtNombre.getText();
+                apellido = jTxtApellido.getText();
+                contraseña = jTxtPswUser.getText();
+                String sql = "";
+                sql = "insert into alumnos(Ci_Usu, Nom_Usu, Ape_Usu, Tip_Usu, Con_Usu) values(?,?,?,?,?)";
+                PreparedStatement psd = cn.prepareStatement(sql);
+                psd.setString(1, cedula);
+                psd.setString(2, nombre);
+                psd.setString(3, apellido);
+                psd.setString(5, contraseña);
+                int n = psd.executeUpdate();
+                if (n > 0) {
+                    JOptionPane.showMessageDialog(null, "USUARIO CREADO CORRETAMENTE");
+                    cargarTablaUsuarios();
+                    limpiarTextosIniciales();
+                    bloquearTextosInicio();
+                    bloquearBotonesInicio();
+                    
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "NO SE GUARDO");
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,7 +135,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         jBtnCrear = new javax.swing.JButton();
         jBtnActualizar = new javax.swing.JButton();
         jBtnEliminar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBtnSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTblUsuarios = new javax.swing.JTable();
@@ -57,6 +161,12 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Apellido:");
+
+        jTxtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtCedulaActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Tipo usuario:");
 
@@ -136,10 +246,10 @@ public class Usuario extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBtnSalir.setText("Salir");
+        jBtnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBtnSalirActionPerformed(evt);
             }
         });
 
@@ -153,7 +263,7 @@ public class Usuario extends javax.swing.JInternalFrame {
                     .addComponent(jBtnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBtnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -166,7 +276,7 @@ public class Usuario extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jBtnEliminar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jBtnSalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -266,16 +376,21 @@ public class Usuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnEliminarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBtnSalirActionPerformed
+
+    private void jTxtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtCedulaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnActualizar;
     private javax.swing.JButton jBtnCrear;
     private javax.swing.JButton jBtnEliminar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBtnSalir;
     private javax.swing.JComboBox<String> jCbxTipUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
