@@ -30,8 +30,6 @@ public class Login extends javax.swing.JFrame {
     private void LogIn(){
         Conexion cn = new Conexion();
         Connection conexion = null;
-        MenuPrcpl menu = new MenuPrcpl();
-        
         try {
             conexion = cn.conectar();
             String sql = "select * from usuarios where Ci_Usu=? and Con_Usu=?";
@@ -41,6 +39,7 @@ public class Login extends javax.swing.JFrame {
             rs = ps.executeQuery();
             if (rs.next()) {
                 tipoUsuario = rs.getString("Tip_Usu");
+                MenuPrcpl menu = new MenuPrcpl(tipoUsuario);
                 if (tipoUsuario.equals("admin")) {
                     menu.setVisible(true);
                     this.dispose();
@@ -141,7 +140,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnSalirActionPerformed
 
     private void jBtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLoginActionPerformed
-        // TODO add your handling code here:
+        LogIn();
     }//GEN-LAST:event_jBtnLoginActionPerformed
 
     private void jTxtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtContraseñaActionPerformed

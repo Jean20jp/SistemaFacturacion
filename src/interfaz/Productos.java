@@ -99,7 +99,7 @@ public class Productos extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Precio:");
 
-        jSpnCant.setModel(new javax.swing.SpinnerNumberModel(0, 0, 1000, 1));
+        jSpnCant.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1000, 1));
 
         jLabel5.setText("Cantidad:");
 

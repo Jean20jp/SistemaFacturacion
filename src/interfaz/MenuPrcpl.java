@@ -11,18 +11,17 @@ package interfaz;
  */
 public class MenuPrcpl extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuPrcpl
-     */
-    public MenuPrcpl() {
+    public String tipoUser;
+    
+    public MenuPrcpl(String tipUser) {
         initComponents();
+        this.tipoUser = tipUser;
         tipoUsuario();
+        setLocationRelativeTo(null);
     }
 
     private void tipoUsuario() {
-        Login log = new Login();
-        String tipoUsuario = log.tipoUsuario;
-        if (tipoUsuario.equals("cajero")) {
+        if (tipoUser.equals("cajero")) {
             jMenuAdmin.setVisible(false);
         }
     }
@@ -160,7 +159,7 @@ public class MenuPrcpl extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrcpl().setVisible(true);
+                new MenuPrcpl(null).setVisible(true);
             }
         });
     }
