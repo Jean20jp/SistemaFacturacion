@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,12 +32,11 @@ public class Usuario extends javax.swing.JInternalFrame {
  
 
     public void bloquearTextosInicio() {
-        jTxtCedula.setEnabled(false);
-        jTxtNombre.setEnabled(false);
-        jTxtApellido.setEnabled(false);
-        jTxtPswUser.setEnabled(false);
-        jCbxTipUser.setEnabled(false);
-        jCbxTipUser.setEnabled(false);
+        jTxtCedula.setEnabled(true);
+        jTxtNombre.setEnabled(true);
+        jTxtApellido.setEnabled(true);
+        jTxtPswUser.setEnabled(true);
+        jCbxTipUser.setEnabled(true);
 
     }
     
@@ -52,7 +52,7 @@ public class Usuario extends javax.swing.JInternalFrame {
             String[] titulos = {"Cedula", "Nombre", "Apellido", "Tipo Usuario"};
             modelo = new DefaultTableModel(null, titulos);
 
-            String[] registros = new String[5];
+            String[] registros = new String[4];
             conexion.Conexion cc = new conexion.Conexion();
             Connection cn = cc.conectar();
             String sql = "";
@@ -94,12 +94,14 @@ public class Usuario extends javax.swing.JInternalFrame {
                 nombre = jTxtNombre.getText();
                 apellido = jTxtApellido.getText();
                 contraseña = jTxtPswUser.getText();
+                tipoUsuario = jCbxTipUser.getSelectedItem().toString();
                 String sql = "";
                 sql = "insert into alumnos(Ci_Usu, Nom_Usu, Ape_Usu, Tip_Usu, Con_Usu) values(?,?,?,?,?)";
                 PreparedStatement psd = cn.prepareStatement(sql);
                 psd.setString(1, cedula);
                 psd.setString(2, nombre);
                 psd.setString(3, apellido);
+                psd.setString(4, tipoUsuario);
                 psd.setString(5, contraseña);
                 int n = psd.executeUpdate();
                 if (n > 0) {
