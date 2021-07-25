@@ -105,6 +105,11 @@ public class Clientes extends javax.swing.JInternalFrame {
         jBtnEliminar.setText("Eliminar");
 
         jBtnSalir.setText("Salir");
+        jBtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -215,6 +220,11 @@ public class Clientes extends javax.swing.JInternalFrame {
     private void jBtnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnInsertarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnInsertarActionPerformed
+
+    private void jBtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBtnSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

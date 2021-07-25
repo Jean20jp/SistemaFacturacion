@@ -66,6 +66,11 @@ public class MenuPrcpl extends javax.swing.JFrame {
         jMenu4.setText("Archivo");
 
         jMnuItmClint.setText("Clientes");
+        jMnuItmClint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuItmClintActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMnuItmClint);
 
         jMenuBar2.add(jMenu4);
@@ -128,6 +133,13 @@ public class MenuPrcpl extends javax.swing.JFrame {
     private void jMnuItmCrearUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuItmCrearUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMnuItmCrearUserActionPerformed
+
+    private void jMnuItmClintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuItmClintActionPerformed
+        // TODO add your handling code here:
+        Clientes cl = new Clientes();
+        jDesktopPane1.add(cl);
+        cl.show();
+    }//GEN-LAST:event_jMnuItmClintActionPerformed
 
     /**
      * @param args the command line arguments
