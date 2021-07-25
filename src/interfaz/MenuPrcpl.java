@@ -32,13 +32,13 @@ public class MenuPrcpl extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
-        jMnItmProduc = new javax.swing.JMenuItem();
         jMnuItmClint = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMnuItmCrearUser = new javax.swing.JMenuItem();
+        jMnItmProduc = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -62,9 +62,6 @@ public class MenuPrcpl extends javax.swing.JFrame {
 
         jMenu4.setText("Archivo");
 
-        jMnItmProduc.setText("Pruductos");
-        jMenu4.add(jMnItmProduc);
-
         jMnuItmClint.setText("Clientes");
         jMenu4.add(jMnuItmClint);
 
@@ -87,8 +84,16 @@ public class MenuPrcpl extends javax.swing.JFrame {
 
         jMenu1.setText("Administrador");
 
-        jMnuItmCrearUser.setText("Crear Usuarios");
+        jMnuItmCrearUser.setText("Usuarios");
+        jMnuItmCrearUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuItmCrearUserActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMnuItmCrearUser);
+
+        jMnItmProduc.setText("Pruductos");
+        jMenu1.add(jMnItmProduc);
 
         jMenuBar2.add(jMenu1);
 
@@ -116,6 +121,10 @@ public class MenuPrcpl extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMnuItmCrearUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuItmCrearUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMnuItmCrearUserActionPerformed
 
     /**
      * @param args the command line arguments

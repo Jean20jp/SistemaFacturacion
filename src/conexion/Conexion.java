@@ -17,7 +17,7 @@ public class Conexion {
     public Connection conectar() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa", "root", "");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/facturacion", "root", "");
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }

@@ -19,6 +19,10 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+    
+    private void LogIn(){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,16 +60,26 @@ public class Login extends javax.swing.JFrame {
 
         jTxtContraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTxtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtContraseñaActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTxtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 300, 30));
 
         jTxtUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTxtUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTxtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtUserActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTxtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 300, 30));
 
         jBtnLogin.setBackground(new java.awt.Color(0, 0, 0));
         jBtnLogin.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
         jBtnLogin.setForeground(new java.awt.Color(255, 255, 255));
-        jBtnLogin.setText("LOG IN");
+        jBtnLogin.setText("INGRESAR");
         jBtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnLoginActionPerformed(evt);
@@ -97,6 +111,14 @@ public class Login extends javax.swing.JFrame {
     private void jBtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnLoginActionPerformed
+
+    private void jTxtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtContraseñaActionPerformed
+
+    private void jTxtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtUserActionPerformed
 
     /**
      * @param args the command line arguments
