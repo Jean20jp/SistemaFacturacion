@@ -1,5 +1,11 @@
 package interfaz;
 
+import conexion.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,16 +18,42 @@ package interfaz;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ventana
-     */
+    public String tipoUsuario;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
     }
     
     private void LogIn(){
+        Conexion cn = new Conexion();
+        Connection conexion = null;
+        MenuPrcpl menu = new MenuPrcpl();
         
+        try {
+            conexion = cn.conectar();
+            String sql = "select * from usuarios where Ci_Usu=? and Con_Usu=?";
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1, jTxtUser.getText());
+            ps.setString(2, jTxtContraseña.getText());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                tipoUsuario = rs.getString("Tip_Usu");
+                if (tipoUsuario.equals("admin")) {
+                    menu.setVisible(true);
+                    this.dispose();
+                }else if (tipoUsuario.equals("cajero")) {
+                    menu.setVisible(true);
+                    this.dispose();
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "No Existen usuarios");
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     /**
