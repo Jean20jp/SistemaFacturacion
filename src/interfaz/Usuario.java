@@ -16,7 +16,6 @@ public class Usuario extends javax.swing.JInternalFrame {
     public Usuario() {
         initComponents();
         bloquearBotonesInicio();
-        bloquearTextosInicio();
         cargarTablaUsuarios();
     }
     
@@ -29,16 +28,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         
     }
 
- 
 
-    public void bloquearTextosInicio() {
-        jTxtCedula.setEnabled(true);
-        jTxtNombre.setEnabled(true);
-        jTxtApellido.setEnabled(true);
-        jTxtPswUser.setEnabled(true);
-        jCbxTipUser.setEnabled(true);
-
-    }
     
     private void limpiarTextosIniciales() {
         jTxtCedula.setText("");
